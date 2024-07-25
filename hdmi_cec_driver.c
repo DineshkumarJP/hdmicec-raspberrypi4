@@ -20,7 +20,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <setjmp.h>
-#include "hdmi_cec_driver.h"
+#include "ccec/drivers/hdmi_cec_driver.h"
 
 
 HDMI_CEC_STATUS HdmiCecOpen(int* handle)
