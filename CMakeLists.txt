@@ -1,21 +1,14 @@
-# Minimum CMake version required
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 2.6)
 
-# Project name and version
-project(MyLibrary VERSION 1.0)
+project(HDMICEC_HAL)
 
-# Set the library name
-set(LIBRARY_NAME mylibrary)
+set(CMAKE_BUILD_TYPE "Debug")
 
-# Specify the source files
-set(SOURCES hdmi_cec_driver.c)
+include_directories(${CMAKE_SOURCE_DIR})
+include_directories(${STAGING_INCDIR})
 
-# Specify the header files (optional but good practice)
-set(HEADERS hdmi_cec_driver.h)
+set (HDMICEC_HAL_SOURCES ${CMAKE_SOURCE_DIR}/hdmi_cec_driver.c)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-attributes -Wall -Wextra -fpermissive")
 
-# Create the shared library
-add_library(${LIBRARY_NAME} SHARED ${SOURCES})
-
-# Include directories (where to find the header files)
-target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
+add_library(RCECHal SHARED ${HDMICEC_HAL_SOURCES})
+install(TARGETS RCECHal DESTINATION lib)
