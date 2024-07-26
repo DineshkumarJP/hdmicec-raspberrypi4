@@ -4,12 +4,12 @@ CFLAGS = -Wall -Wextra -fPIC
 LDFLAGS = -shared
 OBJS = $(SRCS:.c=.o)
 
-$(TARGET): $(OBJS)
-        $(CC) $(LDFLAGS) $(OBJS) -o $(LIBNAME)
+$(LIBNAME): $(OBJS)
+	$(CC) $(LDFLAGS) $(OBJS) -o $(LIBNAME)
 
 %.o: %.c
-        $(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
-        rm -f $(OBJS) $(LIBNAME)
+	rm -f $(OBJS) $(LIBNAME)
